@@ -1,4 +1,3 @@
-
 /*
   test @(#)DisplayModeTest.java	1.4 01/07/17
   @bug 4189326
@@ -56,11 +55,11 @@ class DisplayModeModel extends DefaultTableModel {
     public Object getValueAt(int rowIndex, int colIndex) {
         DisplayMode dm = modes[rowIndex];
         switch (colIndex) {
-            case DisplayModeTest.INDEX_WIDTH :
+            case DisplayModeTest.INDEX_WIDTH:
                 return Integer.toString(dm.getWidth());
-            case DisplayModeTest.INDEX_HEIGHT :
+            case DisplayModeTest.INDEX_HEIGHT:
                 return Integer.toString(dm.getHeight());
-            case DisplayModeTest.INDEX_BITDEPTH : {
+            case DisplayModeTest.INDEX_BITDEPTH: {
                 int bitDepth = dm.getBitDepth();
                 String ret;
                 if (bitDepth == DisplayMode.BIT_DEPTH_MULTI) {
@@ -70,7 +69,7 @@ class DisplayModeModel extends DefaultTableModel {
                 }
                 return ret;
             }
-            case DisplayModeTest.INDEX_REFRESHRATE : {
+            case DisplayModeTest.INDEX_REFRESHRATE: {
                 int refreshRate = dm.getRefreshRate();
                 String ret;
                 if (refreshRate == DisplayMode.REFRESH_RATE_UNKNOWN) {
@@ -87,7 +86,7 @@ class DisplayModeModel extends DefaultTableModel {
 }
 
 class DisplayModeTest extends JFrame implements ActionListener,
-    ListSelectionListener {
+        ListSelectionListener {
 
     private boolean waiting = false;
     private GraphicsDevice device;
@@ -105,10 +104,10 @@ class DisplayModeTest extends JFrame implements ActionListener,
     public static final int INDEX_REFRESHRATE = 3;
 
     public static final int[] COLUMN_WIDTHS = new int[] {
-        100, 100, 100, 100
+            100, 100, 100, 100
     };
     public static final String[] COLUMN_NAMES = new String[] {
-        "Width", "Height", "Bit Depth", "Refresh Rate"
+            "Width", "Height", "Bit Depth", "Refresh Rate"
     };
 
     public DisplayModeTest(GraphicsDevice device) {
@@ -132,7 +131,7 @@ class DisplayModeTest extends JFrame implements ActionListener,
         } else { // if (source == changeDM)
             int index = dmList.getSelectionModel().getAnchorSelectionIndex();
             if (index >= 0) {
-                DisplayModeModel model = (DisplayModeModel)dmList.getModel();
+                DisplayModeModel model = (DisplayModeModel) dmList.getModel();
                 DisplayMode dm = model.getDisplayMode(index);
                 device.setDisplayMode(dm);
                 setDMLabel(dm);
@@ -166,7 +165,7 @@ class DisplayModeTest extends JFrame implements ActionListener,
             dmList.addColumn(col);
         }
         dmList.getSelectionModel().setSelectionMode(
-            ListSelectionModel.SINGLE_SELECTION);
+                ListSelectionModel.SINGLE_SELECTION);
         dmList.getSelectionModel().addListSelectionListener(this);
         modesPanel.add(dmPane);
         // Controls
@@ -207,11 +206,10 @@ class DisplayModeTest extends JFrame implements ActionListener,
             rr = Integer.toString(refreshRate);
         }
         currentDM.setText(
-            COLUMN_NAMES[INDEX_WIDTH] + ": " + newMode.getWidth() + " "
-            + COLUMN_NAMES[INDEX_HEIGHT] + ": " + newMode.getHeight() + " "
-            + COLUMN_NAMES[INDEX_BITDEPTH] + ": " + bd + " "
-            + COLUMN_NAMES[INDEX_REFRESHRATE] + ": " + rr
-            );
+                COLUMN_NAMES[INDEX_WIDTH] + ": " + newMode.getWidth() + " "
+                        + COLUMN_NAMES[INDEX_HEIGHT] + ": " + newMode.getHeight() + " "
+                        + COLUMN_NAMES[INDEX_BITDEPTH] + ": " + bd + " "
+                        + COLUMN_NAMES[INDEX_REFRESHRATE] + ": " + rr);
     }
 
     public void begin() {
@@ -230,8 +228,7 @@ class DisplayModeTest extends JFrame implements ActionListener,
     }
 
     public static void main(String[] args) {
-        GraphicsEnvironment env = GraphicsEnvironment.
-            getLocalGraphicsEnvironment();
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice[] devices = env.getScreenDevices();
         // REMIND : Multi-monitor full-screen mode not yet supported
         for (int i = 0; i < 1 /* devices.length */; i++) {

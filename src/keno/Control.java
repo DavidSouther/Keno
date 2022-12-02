@@ -14,9 +14,9 @@ package keno;
  * @author David Souther
  */
 public class Control {
-    
+
     /** Creates a new instance of Control */
     public Control() {
     }
-    
+
 }
